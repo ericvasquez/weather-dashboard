@@ -90,7 +90,7 @@
       var city = $("#city-input").val();
 
       // Here we construct our URL
-      var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=734796d6ef828ddeb1495bc4b1aac332";
+      var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=734796d6ef828ddeb1495bc4b1aac332&units=imperial";
 
       $.ajax({
         url: queryURL,
@@ -134,27 +134,16 @@
           }
 
           $("#current-uv").text(uvIndex).css("background-color", uvColor);
-$(".uvIndex").prepend("UV Index: ");
+          $(".uvIndex").prepend("UV Index: ");
         })
-        // $("img").after("Some text after");
 
-        // $("img").before("Some text before");
         $(".today").append("Today's Date: " + today);
+        var icon = response.list[0].weather[0].icon;
         $(".icon").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png");
-
         $(".city").text("City: " + response.city.name);
         $(".wind").text("Wind Speed: " + response.list[0].wind.speed + " MPH");
+        $(".temp").text("Temp: " + response.list[0].main.temp.toFixed(1));
         $(".humidity").text("Humidity: " + response.list[0].main.humidity + " %");
-        // Create CODE HERE to calculate the temperature (converted from Kelvin)
-        var temp = (response.list[0].main.temp - 273.15) * 1.80 + 32;
-        // Hint: To convert from Kelvin to Fahrenheit: F = (K - 273.15) * 1.80 + 32
-        //units=imperial for F
-        // Create CODE HERE to dump the temperature content into HTML
-        $(".temp").text("Temp: " + temp.toFixed(1));
-        var icon = response.list[0].weather[0].icon;
-
-
-
 
 
         $("#forecast").removeClass("invisible");
@@ -162,56 +151,35 @@ $(".uvIndex").prepend("UV Index: ");
         $(".day1").text(response.list[7].dt_txt);
         var icon1 = response.list[7].weather[0].icon;
         $(".icon1").attr("src", "http://openweathermap.org/img/wn/" + icon1 + "@2x.png");
-        var temp1 = (response.list[7].main.temp - 273.15) * 1.80 + 32;
-        // Hint: To convert from Kelvin to Fahrenheit: F = (K - 273.15) * 1.80 + 32
-        // Create CODE HERE to dump the temperature content into HTML
-        $(".temp1").text("Temp: " + temp1.toFixed(1));
+        $(".temp1").text("Temp: " + response.list[7].main.temp.toFixed(1));
         $(".humidity1").text("Humidity: " + response.list[7].main.humidity + " %");
 
         $(".day2").text(response.list[15].dt_txt);
         var icon2 = response.list[15].weather[0].icon;
         $(".icon2").attr("src", "http://openweathermap.org/img/wn/" + icon2 + "@2x.png");
-        var temp2 = (response.list[15].main.temp - 273.15) * 1.80 + 32;
-        // Hint: To convert from Kelvin to Fahrenheit: F = (K - 273.15) * 1.80 + 32
-        // Create CODE HERE to dump the temperature content into HTML
-        $(".temp2").text("Temp: " + temp2.toFixed(1));
+        $(".temp2").text("Temp: " + response.list[15].main.temp.toFixed(1));
         $(".humidity2").text("Humidity: " + response.list[15].main.humidity + " %");
 
         $(".day3").text(response.list[23].dt_txt);
         var icon3 = response.list[23].weather[0].icon;
         $(".icon3").attr("src", "http://openweathermap.org/img/wn/" + icon3 + "@2x.png");
-        var temp3 = (response.list[23].main.temp - 273.15) * 1.80 + 32;
-        // Hint: To convert from Kelvin to Fahrenheit: F = (K - 273.15) * 1.80 + 32
-        // Create CODE HERE to dump the temperature content into HTML
-        $(".temp3").text("Temp: " + temp3.toFixed(1));
+        $(".temp3").text("Temp: " + response.list[23].main.temp.toFixed(1));
         $(".humidity3").text("Humidity: " + response.list[23].main.humidity + " %");
-
-
 
         $(".day4").text(response.list[31].dt_txt);
         var icon4 = response.list[31].weather[0].icon;
         $(".icon4").attr("src", "http://openweathermap.org/img/wn/" + icon4 + "@2x.png");
-        var temp4 = (response.list[31].main.temp - 273.15) * 1.80 + 32;
-        // Hint: To convert from Kelvin to Fahrenheit: F = (K - 273.15) * 1.80 + 32
-        // Create CODE HERE to dump the temperature content into HTML
-        $(".temp4").text("Temp: " + temp4.toFixed(1));
+        $(".temp4").text("Temp: " + response.list[31].main.temp.toFixed(1));
         $(".humidity4").text("Humidity: " + response.list[31].main.humidity + " %");
 
         $(".day5").text(response.list[39].dt_txt);
         var icon5 = response.list[39].weather[0].icon;
         $(".icon5").attr("src", "http://openweathermap.org/img/wn/" + icon5 + "@2x.png");
-        var temp5 = (response.list[39].main.temp - 273.15) * 1.80 + 32;
-        // Hint: To convert from Kelvin to Fahrenheit: F = (K - 273.15) * 1.80 + 32
-        // Create CODE HERE to dump the temperature content into HTML
-        $(".temp5").text("Temp: " + temp5.toFixed(1));
+        $(".temp5").text("Temp: " + response.list[39].main.temp.toFixed(1));
         $(".humidity5").text("Humidity: " + response.list[39].main.humidity + " %");
 
 
-
       });
-
-
-      // =================================================================
     });
   </script>
 
